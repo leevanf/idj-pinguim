@@ -73,6 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)\include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -145,18 +146,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Music.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="State.cpp" />
+    <ClCompile Include="src\Component.cpp" />
+    <ClCompile Include="src\Face.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\SDL2-2.24.2\bin;F:\JogoDoPinguim\Jogo_Do_Pinguim\Jogo_Do_Pinguim\include;F:\JogoDoPinguim\Jogo_Do_Pinguim\Jogo_Do_Pinguim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GameObject.cpp" />
+    <ClCompile Include="src\Music.cpp" />
+    <ClCompile Include="src\Rect.cpp" />
+    <ClCompile Include="src\Sound.cpp" />
+    <ClCompile Include="src\Sprite.cpp" />
+    <ClCompile Include="src\State.cpp" />
+    <ClCompile Include="src\Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Music.h" />
-    <ClInclude Include="SDL_include.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="State.h" />
+    <ClInclude Include="include\Component.h" />
+    <ClInclude Include="include\Face.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\GameObject.h" />
+    <ClInclude Include="include\Music.h" />
+    <ClInclude Include="include\Rect.h" />
+    <ClInclude Include="include\SDL_include.h" />
+    <ClInclude Include="include\Sound.h" />
+    <ClInclude Include="include\Sprite.h" />
+    <ClInclude Include="include\State.h" />
+    <ClInclude Include="include\Vec2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
