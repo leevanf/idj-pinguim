@@ -91,7 +91,7 @@ Vec2& Vec2::Rotate(float theta) {
 	y = newY;
 	return *this;
 }
-// Esses dois dão problema de aproximacao
+
 Vec2& Vec2::RotateDeg(float thetaDeg) {
 	float theta = thetaDeg * M_PI / 180;
 	float newX = x * cos(theta) - y * sin(theta);

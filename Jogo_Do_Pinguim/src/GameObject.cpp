@@ -5,7 +5,6 @@ GameObject::GameObject() {
 }
 
 GameObject::~GameObject() {
-	Component* soundComponent;
 	for (auto it = (components.end() - 1); it != (components.begin() - 1); --it) {
 		delete* it;
 	}

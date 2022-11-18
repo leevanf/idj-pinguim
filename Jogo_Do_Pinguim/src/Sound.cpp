@@ -8,16 +8,16 @@ Sound::Sound(GameObject& associated, std::string file) : Sound(associated) {
 	Open(file);
 }
 
-std::vector<Mix_Chunk*> vectorCh{32};
+std::vector<Mix_Chunk*> vectorCh{ 32 };
 
-void channelCallback(int channel) {
+void handleChannelFinished(int channel) {
 	Mix_FreeChunk(vectorCh[channel]);
 }
 
 Sound::~Sound() {
 	if (chunk != nullptr) {
 		vectorCh[channel] = chunk;
-		Mix_ChannelFinished(channelCallback);
+		Mix_ChannelFinished(handleChannelFinished);
 	}
 }
 

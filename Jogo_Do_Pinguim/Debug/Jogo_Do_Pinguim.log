@@ -1,14 +1,4 @@
-﻿  Main.cpp
-  Component.cpp
-  Game.cpp
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Game.cpp(7,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  GameObject.cpp
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\GameObject.cpp(8,13): warning C4101: 'soundComponent': unreferenced local variable
-  Music.cpp
-  Rect.cpp
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Rect.cpp(42,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  Sound.cpp
-  Sprite.cpp
+﻿  Sound.cpp
   State.cpp
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(68,45): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(68,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -16,10 +6,5 @@ F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(68,88): warning C4244
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(80,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(81,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(97,32): warning C4018: '<': signed/unsigned mismatch
-  Vec2.cpp
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Vec2.cpp(56,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Vec2.cpp(82,28): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Vec2.cpp(96,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Generating Code...
-  Face.cpp
   Jogo_Do_Pinguim.vcxproj -> F:\JogoDoPinguim\idj-pinguim\Debug\Jogo_Do_Pinguim.exe
