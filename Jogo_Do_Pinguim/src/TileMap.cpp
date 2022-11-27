@@ -59,7 +59,9 @@ void TileMap::RenderLayer(int layer, int cameraX, int cameraY) {
 }
 
 void TileMap::Render() {
-	TileMap::RenderLayer(0);
+	for (int z = 0; z < mapDepth; z++) {
+		TileMap::RenderLayer(z);
+	}
 }
 
 void TileMap::Update(float dt) {
