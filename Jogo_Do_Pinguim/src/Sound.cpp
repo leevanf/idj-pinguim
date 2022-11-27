@@ -1,4 +1,5 @@
 #include "Sound.h"
+#include "Resources.h"
 
 Sound::Sound(GameObject& associated) : Component(associated) {
 	chunk = nullptr;
@@ -8,17 +9,17 @@ Sound::Sound(GameObject& associated, std::string file) : Sound(associated) {
 	Open(file);
 }
 
-std::vector<Mix_Chunk*> vectorCh{ 32 };
+//std::vector<Mix_Chunk*> vectorCh{ 32 };
 
-void handleChannelFinished(int channel) {
-	Mix_FreeChunk(vectorCh[channel]);
-}
+//void handleChannelFinished(int channel) {
+//	Mix_FreeChunk(vectorCh[channel]);
+//}
 
 Sound::~Sound() {
-	if (chunk != nullptr) {
-		vectorCh[channel] = chunk;
-		Mix_ChannelFinished(handleChannelFinished);
-	}
+	//if (chunk != nullptr) {
+	//	vectorCh[channel] = chunk;
+	//	Mix_ChannelFinished(handleChannelFinished);
+	//}
 }
 
 void Sound::Play(int times) {
@@ -37,12 +38,7 @@ void Sound::Stop() {
 }
 
 void Sound::Open(std::string file) {
-	chunk = Mix_LoadWAV(file.c_str());
-	if (chunk == nullptr) {
-		std::cout << "Mix_LoadWAV failed: " << SDL_GetError() << "\n";
-		Sound::~Sound();
-	}
-	Mix_VolumeChunk(chunk, 20);
+	chunk = Resources::GetSound(file);
 }
 
 void Sound::Update(float dt) {

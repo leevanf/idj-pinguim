@@ -1,5 +1,6 @@
 #include "Sprite.h"
 #include "Game.h"
+#include "Resources.h"
 
 Sprite::Sprite(GameObject& associated) : Component(associated) {
 	texture = nullptr;
@@ -12,16 +13,11 @@ Sprite::Sprite(GameObject& associated, std::string file) : Sprite(associated) {
 }
 
 Sprite::~Sprite() {
-	if (texture) {
-		SDL_DestroyTexture(texture);
-	}
+
 }
 
 void Sprite::Open(std::string file) {
-	if (texture != nullptr) {
-		SDL_DestroyTexture(texture);
-	}
-	texture = IMG_LoadTexture(Game::GetInstance().GetRenderer(), file.c_str());
+	texture = Resources::GetImage(file);
 	if (texture == nullptr) {
 		std::cout << "IMG_LoadTexture failed: " << SDL_GetError() << "\n";
 		return;
@@ -40,12 +36,20 @@ void Sprite::SetClip(int x, int y, int w, int h) {
 }
 
 void Sprite::Render() {
+	Sprite::Render(mAssociated.box.x, mAssociated.box.y);
+}
+
+void Sprite::Render(float x, float y) {
 	SDL_Rect dst;
-	dst.x = (int)mAssociated.box.x;
-	dst.y = (int)mAssociated.box.y;
+	dst.x = (int)x;
+	dst.y = (int)y;
 	dst.w = clipRect.w;
 	dst.h = clipRect.h;
-	SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture, &clipRect, &dst);
+	int renderCopyCode = SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture, &clipRect, &dst);
+	if (renderCopyCode != 0) {
+		std::cout << "SDL_RenderCopy failed: " << SDL_GetError() << "\n";
+		exit(1);
+	}
 }
 
 void Sprite::Update(float dt) {

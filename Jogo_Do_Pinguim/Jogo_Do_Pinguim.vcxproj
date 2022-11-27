@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="src\Resources.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\Face.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\SDL2-2.24.2\bin;F:\JogoDoPinguim\Jogo_Do_Pinguim\Jogo_Do_Pinguim\include;F:\JogoDoPinguim\Jogo_Do_Pinguim\Jogo_Do_Pinguim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -159,6 +160,8 @@
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\Vec2.cpp" />
+    <ClCompile Include="src\TileSet.cpp" />
+    <ClCompile Include="src\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Component.h" />
@@ -172,6 +175,9 @@
     <ClInclude Include="include\Sprite.h" />
     <ClInclude Include="include\State.h" />
     <ClInclude Include="include\Vec2.h" />
+    <ClInclude Include="include\TileSet.h" />
+    <ClInclude Include="include\TileMap.h" />
+    <ClInclude Include="include\Resources.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

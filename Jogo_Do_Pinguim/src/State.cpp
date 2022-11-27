@@ -3,6 +3,7 @@
 #include "State.h"
 #include "Face.h"
 #include "Sound.h"
+#include "TileMap.h"
 
 State::State() : music{ "..\\Jogo_Do_Pinguim\\audio\\stageState.ogg" } {
 	GameObject* GO = new GameObject();
@@ -11,11 +12,21 @@ State::State() : music{ "..\\Jogo_Do_Pinguim\\audio\\stageState.ogg" } {
 	GO->box.y = 0;
 	GO->AddComponent(background);
 	objectArray.emplace_back(GO);
+
+	GameObject* GO2 = new GameObject();
+	tileSet = new TileSet(64,64, "..\\Jogo_Do_Pinguim\\img\\tileset.png");
+	TileMap* tileMap = new TileMap(*GO2, "..\\Jogo_Do_Pinguim\\map\\tilemap.txt", tileSet);
+	GO2->box.x = 0;
+	GO2->box.y = 0;
+	GO2->AddComponent(tileMap);
+	objectArray.emplace_back(GO2);
+
 	quitRequested = false;
 	music.Play();
 }
 
 State::~State() {
+	delete tileSet;
 	objectArray.clear();
 }
 

@@ -1,10 +1,6 @@
-﻿  Sound.cpp
-  State.cpp
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(68,45): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(68,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(68,88): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(80,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(81,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(97,32): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+﻿  TileMap.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(54,51): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(55,52): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(56,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(56,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Jogo_Do_Pinguim.vcxproj -> F:\JogoDoPinguim\idj-pinguim\Debug\Jogo_Do_Pinguim.exe

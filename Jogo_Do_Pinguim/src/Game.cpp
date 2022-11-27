@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Resources.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -46,6 +47,9 @@ Game::Game(std::string title, int width, int height) {
 
 Game::~Game() {
 	delete state;
+	Resources::ClearImages();
+	Resources::ClearMusics();
+	Resources::ClearSounds();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	Mix_CloseAudio();

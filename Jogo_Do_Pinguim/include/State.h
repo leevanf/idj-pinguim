@@ -4,12 +4,14 @@
 #include "Sprite.h"
 #include "Music.h"
 #include "GameObject.h"
+#include "TileSet.h"
 #include <vector>
 
 class State{
 	private:
 		Music music;
 		bool quitRequested;
+		TileSet* tileSet;
 
 		std::vector<std::unique_ptr<GameObject>> objectArray;
 		void Input();

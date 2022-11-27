@@ -18,6 +18,7 @@ class Sprite : public Component{
 		void Open(std::string file);
 		void SetClip(int x, int y, int w, int h);
 		virtual void Render();
+		void Render(float x, float y);
 		virtual void Update(float dt);
 		virtual bool Is(std::string type);
 		int GetWidth() { return width; }
