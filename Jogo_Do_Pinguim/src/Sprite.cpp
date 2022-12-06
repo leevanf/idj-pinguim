@@ -1,6 +1,7 @@
 #include "Sprite.h"
 #include "Game.h"
 #include "Resources.h"
+#include "Camera.h"
 
 Sprite::Sprite(GameObject& associated) : Component(associated) {
 	texture = nullptr;
@@ -41,8 +42,8 @@ void Sprite::Render() {
 
 void Sprite::Render(float x, float y) {
 	SDL_Rect dst;
-	dst.x = (int)x;
-	dst.y = (int)y;
+	dst.x = (int)x + Camera::pos.x;
+	dst.y = (int)y + Camera::pos.y;
 	dst.w = clipRect.w;
 	dst.h = clipRect.h;
 	int renderCopyCode = SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture, &clipRect, &dst);

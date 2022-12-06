@@ -1,6 +1,8 @@
 ﻿  TileMap.cpp
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(54,51): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(55,52): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(56,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(56,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(55,71): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(56,72): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(57,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(57,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(64,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(64,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Jogo_Do_Pinguim.vcxproj -> F:\JogoDoPinguim\idj-pinguim\Debug\Jogo_Do_Pinguim.exe

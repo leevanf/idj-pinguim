@@ -43,6 +43,8 @@ Game::Game(std::string title, int width, int height) {
 	}
 
 	state = new State();
+	frameStart = 0;
+	dt = 0;
 }
 
 Game::~Game() {
@@ -60,7 +62,9 @@ Game::~Game() {
 
 void Game::Run() {
 	while (state->QuitRequested() == false) {
-		state->Update(100);
+		Game::CalculateDeltaTime();
+		InputManager::GetInstance().Update();
+		state->Update(Game::GetDeltaTime());
 		state->Render();
 		SDL_RenderPresent(renderer);
 		SDL_Delay(33);
@@ -72,4 +76,10 @@ Game& Game::GetInstance() {
 		instance = new Game("Lucas Monteiro Miranda, 170149684", 1024, 600);
 	}
 	return *instance;
+}
+
+void Game::CalculateDeltaTime() {
+	Uint32 ticks = SDL_GetTicks();
+	dt = (ticks - frameStart) / 1000.0;
+	frameStart = ticks;
 }

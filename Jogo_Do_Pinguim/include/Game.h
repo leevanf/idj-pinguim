@@ -12,6 +12,7 @@
 #include <stdexcept>
 #include <iostream>
 #include "State.h"
+#include "InputManager.h"
 
 class Game{
 	private:
@@ -19,6 +20,9 @@ class Game{
 		SDL_Window* window;
 		SDL_Renderer* renderer;
 		State* state;
+		int frameStart;
+		float dt;
+		void CalculateDeltaTime();
 
 		Game(std::string title, int width, int height);
 	public:
@@ -27,6 +31,7 @@ class Game{
 		SDL_Renderer* GetRenderer() { return renderer; }
 		State& GetState() { return *state; }
 		static Game& GetInstance();
+		float GetDeltaTime() { return dt; };
 };
 
 #endif // GAME

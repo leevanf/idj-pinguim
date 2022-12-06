@@ -146,6 +146,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\CameraFollower.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="src\Resources.cpp" />
     <ClCompile Include="src\Component.cpp" />
@@ -164,6 +167,8 @@
     <ClCompile Include="src\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\CameraFollower.h" />
+    <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\Face.h" />
     <ClInclude Include="include\Game.h" />
@@ -178,6 +183,7 @@
     <ClInclude Include="include\TileSet.h" />
     <ClInclude Include="include\TileMap.h" />
     <ClInclude Include="include\Resources.h" />
+    <ClInclude Include="include\InputManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

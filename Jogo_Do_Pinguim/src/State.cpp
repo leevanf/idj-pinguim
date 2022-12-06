@@ -4,13 +4,18 @@
 #include "Face.h"
 #include "Sound.h"
 #include "TileMap.h"
+#include "InputManager.h"
+#include "Camera.h"
+#include "CameraFollower.h"
 
 State::State() : music{ "..\\Jogo_Do_Pinguim\\audio\\stageState.ogg" } {
 	GameObject* GO = new GameObject();
 	Sprite* background = new Sprite(*GO, "..\\Jogo_Do_Pinguim\\img\\ocean.jpg");
+	CameraFollower* camFollower = new CameraFollower(*GO);
 	GO->box.x = 0;
 	GO->box.y = 0;
 	GO->AddComponent(background);
+	GO->AddComponent(camFollower);
 	objectArray.emplace_back(GO);
 
 	GameObject* GO2 = new GameObject();
@@ -29,7 +34,7 @@ State::~State() {
 	delete tileSet;
 	objectArray.clear();
 }
-
+/*
 void State::Input() {
 	SDL_Event event;
 	int mouseX, mouseY;
@@ -82,14 +87,14 @@ void State::Input() {
 		}
 	}
 }
-
+*/
 void State::AddObject(int mouseX, int mouseY) {
 	GameObject* GO = new GameObject();
 	Sprite* sprite = new Sprite(*GO, "..\\Jogo_Do_Pinguim\\img\\penguinface.png");
 	Sound* sound = new Sound(*GO, "..\\Jogo_Do_Pinguim\\audio\\boom.wav");
 	Face* face = new Face(*GO);
-	GO->box.x = mouseX-(sprite->GetWidth()/2);
-	GO->box.y = mouseY-(sprite->GetHeight()/2);
+	GO->box.x = mouseX - (sprite->GetWidth()/2) - Camera::pos.x;
+	GO->box.y = mouseY - (sprite->GetHeight()/2) - Camera::pos.y;
 	GO->AddComponent(sprite);
 	GO->AddComponent(sound);
 	GO->AddComponent(face);
@@ -101,7 +106,15 @@ void State::LoadAssets() {
 }
 
 void State::Update(float dt) {
-	State::Input();
+	InputManager& inputManager = InputManager::GetInstance();
+	Camera::Update(dt);
+	if (inputManager.QuitRequested() || inputManager.IsKeyDown(ESCAPE_KEY)) {
+		quitRequested = true;
+	}
+	if (inputManager.KeyPress(SPACEBAR_KEY)) {
+		Vec2 objPos = Vec2(200, 0).Rotate(-M_PI + M_PI * (rand() % 1001) / 500.0).Add(Vec2(inputManager.GetMouseX(), inputManager.GetMouseY()));
+		AddObject((int)objPos.x, (int)objPos.y);
+	}
 	for (auto it = objectArray.begin(); it != objectArray.end(); ++it) {
 		(*it)->Update(dt);
 	}
