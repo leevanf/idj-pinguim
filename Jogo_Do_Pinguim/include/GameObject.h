@@ -13,6 +13,7 @@ class GameObject{
 	public:
 		GameObject();
 		~GameObject();
+		void Start();
 		void Update(float dt);
 		void Render();
 		bool IsDead();
@@ -21,6 +22,7 @@ class GameObject{
 		void RemoveComponent(Component* cpt);
 		Component* GetComponent(std::string type);
 		Rect box;
+		bool started;
 };
 
 #endif //GAMEOBJECT

@@ -7,8 +7,12 @@
 #include "InputManager.h"
 #include "Camera.h"
 #include "CameraFollower.h"
+#include "Alien.h"
 
 State::State() : music{ "..\\Jogo_Do_Pinguim\\audio\\stageState.ogg" } {
+	started = false;
+	quitRequested = false;
+
 	GameObject* GO = new GameObject();
 	Sprite* background = new Sprite(*GO, "..\\Jogo_Do_Pinguim\\img\\ocean.jpg");
 	CameraFollower* camFollower = new CameraFollower(*GO);
@@ -26,7 +30,12 @@ State::State() : music{ "..\\Jogo_Do_Pinguim\\audio\\stageState.ogg" } {
 	GO2->AddComponent(tileMap);
 	objectArray.emplace_back(GO2);
 
-	quitRequested = false;
+	GameObject* GO3 = new GameObject();
+	Alien* alien = new Alien(*GO3, 0);
+	GO3->box.setRectCenter(512, 300);
+	GO3->AddComponent(alien);
+	objectArray.emplace_back(GO3);
+
 	music.Play();
 }
 
@@ -34,71 +43,31 @@ State::~State() {
 	delete tileSet;
 	objectArray.clear();
 }
-/*
-void State::Input() {
-	SDL_Event event;
-	int mouseX, mouseY;
 
-	// Obtenha as coordenadas do mouse
-	SDL_GetMouseState(&mouseX, &mouseY);
+void State::Start() {
+	State::LoadAssets();
+	for (int counter = 0; counter < objectArray.size(); counter++) {
+		objectArray[counter]->Start();
+	}
+	started = true;
+}
 
-	// SDL_PollEvent retorna 1 se encontrar eventos, zero caso contrário
-	while (SDL_PollEvent(&event)) {
+std::weak_ptr<GameObject> State::AddObject(GameObject* go) {
+	std::shared_ptr<GameObject> GO(go);
+	objectArray.push_back(GO);
+	if (started) {
+		GO->Start();
+	}
+	return std::weak_ptr<GameObject>(GO);
+}
 
-		// Se o evento for quit, setar a flag para terminação
-		if (event.type == SDL_QUIT) {
-			quitRequested = true;
-		}
-
-		// Se o evento for clique...
-		if (event.type == SDL_MOUSEBUTTONDOWN) {
-
-			// Percorrer de trás pra frente pra sempre clicar no objeto mais de cima
-			for (int i = objectArray.size() - 1; i >= 0; --i) {
-				// Obtem o ponteiro e casta pra Face.
-				GameObject* go = (GameObject*)objectArray[i].get();
-				// Nota: Desencapsular o ponteiro é algo que devemos evitar ao máximo.
-				// O propósito do unique_ptr é manter apenas uma cópia daquele ponteiro,
-				// ao usar get(), violamos esse princípio e estamos menos seguros.
-				// Esse código, assim como a classe Face, é provisório. Futuramente, para
-				// chamar funções de GameObjects, use objectArray[i]->função() direto.
-
-				if (go->box.isPointInsideRect((float)mouseX, (float)mouseY)) {
-					Face* face = (Face*)go->GetComponent("Face");
-					if (nullptr != face) {
-						// Aplica dano
-						face->Damage(std::rand() % 10 + 10);
-						// Sai do loop (só queremos acertar um)
-						break;
-					}
-				}
-			}
-		}
-		if (event.type == SDL_KEYDOWN) {
-			// Se a tecla for ESC, setar a flag de quit
-			if (event.key.keysym.sym == SDLK_ESCAPE) {
-				quitRequested = true;
-			}
-			// Se não, crie um objeto
-			else {
-				Vec2 objPos = Vec2(200, 0).Rotate(-M_PI + M_PI * (rand() % 1001) / 500.0).Add(Vec2(mouseX, mouseY));
-				AddObject((int)objPos.x, (int)objPos.y);
-			}
+std::weak_ptr<GameObject> State::GetObjectPtr(GameObject* go) {
+	for (auto it = objectArray.begin(); it != objectArray.end(); ++it) {
+		if (it->get() == go) {
+			return std::weak_ptr<GameObject>(*it);
 		}
 	}
-}
-*/
-void State::AddObject(int mouseX, int mouseY) {
-	GameObject* GO = new GameObject();
-	Sprite* sprite = new Sprite(*GO, "..\\Jogo_Do_Pinguim\\img\\penguinface.png");
-	Sound* sound = new Sound(*GO, "..\\Jogo_Do_Pinguim\\audio\\boom.wav");
-	Face* face = new Face(*GO);
-	GO->box.x = mouseX - (sprite->GetWidth()/2) - Camera::pos.x;
-	GO->box.y = mouseY - (sprite->GetHeight()/2) - Camera::pos.y;
-	GO->AddComponent(sprite);
-	GO->AddComponent(sound);
-	GO->AddComponent(face);
-	objectArray.emplace_back(GO);
+	return std::weak_ptr<GameObject>();
 }
 
 void State::LoadAssets() {
@@ -111,12 +80,8 @@ void State::Update(float dt) {
 	if (inputManager.QuitRequested() || inputManager.IsKeyDown(ESCAPE_KEY)) {
 		quitRequested = true;
 	}
-	if (inputManager.KeyPress(SPACEBAR_KEY)) {
-		Vec2 objPos = Vec2(200, 0).Rotate(-M_PI + M_PI * (rand() % 1001) / 500.0).Add(Vec2(inputManager.GetMouseX(), inputManager.GetMouseY()));
-		AddObject((int)objPos.x, (int)objPos.y);
-	}
-	for (auto it = objectArray.begin(); it != objectArray.end(); ++it) {
-		(*it)->Update(dt);
+	for (int counter = 0; counter < objectArray.size(); counter++) {
+		objectArray[counter]->Update(dt);
 	}
 	for (int counter = 0; counter < objectArray.size(); counter++) {
 		if (objectArray[counter]->IsDead()) {

@@ -26,25 +26,24 @@ void Rect::addVector(Vec2 vector) {
 	y += vector.y;
 }
 
-std::pair<float, float> Rect::RectCenter() {
-	return std::make_pair(x+w/2,y+h/2);
+Vec2 Rect::RectCenter() {
+	return Vec2(x + w / 2, y + h / 2);
 }
-/*
-Para extrair a resposta:
-std::pair<int, int> answer = ExampleRect.RectCenter();
-  // -> answer.first == x+w/2
-  // -> answer.second == y+h/2
-*/
 
-float Rect::_DistanceCalculator(std::pair<float, float> firstRect, std::pair<float, float> secondRect) {
-	float xPos = firstRect.first - secondRect.first;
-	float yPos = firstRect.second - secondRect.second;
+void Rect::setRectCenter(float x, float y) {
+	Rect::x = x - w / 2;
+	Rect::y = y - h / 2;
+}
+
+float Rect::_DistanceCalculator(Vec2 firstRect, Vec2 secondRect) {
+	float xPos = firstRect.x - secondRect.x;
+	float yPos = firstRect.y - secondRect.y;
 	return sqrt(pow(xPos, 2) + pow(yPos, 2));
 }
 
 float Rect::CentersDistance(Rect otherRect) {
-	std::pair<float, float> currentRect = Rect::RectCenter();
-	std::pair<float, float> secondRect = otherRect.RectCenter();
+	Vec2 currentRect = Rect::RectCenter();
+	Vec2 secondRect = otherRect.RectCenter();
 	return Rect::_DistanceCalculator(currentRect, secondRect);
 }
 

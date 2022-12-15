@@ -146,6 +146,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bullet.cpp" />
+    <ClCompile Include="src\Minion.cpp" />
+    <ClCompile Include="src\Alien.cpp" />
     <ClCompile Include="src\CameraFollower.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
@@ -167,6 +170,8 @@
     <ClCompile Include="src\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Bullet.h" />
+    <ClInclude Include="include\Alien.h" />
     <ClInclude Include="include\CameraFollower.h" />
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\Component.h" />
@@ -184,6 +189,7 @@
     <ClInclude Include="include\TileMap.h" />
     <ClInclude Include="include\Resources.h" />
     <ClInclude Include="include\InputManager.h" />
+    <ClInclude Include="include\Minion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

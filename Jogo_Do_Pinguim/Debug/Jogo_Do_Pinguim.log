@@ -1,8 +1,49 @@
-﻿  TileMap.cpp
+﻿  Main.cpp
+  Alien.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(28,89): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(36,35): warning C4144: '<': relational expression as switch expression
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(57,35): warning C4144: '<': relational expression as switch expression
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(99,34): warning C4018: '<': signed/unsigned mismatch
+  Bullet.cpp
+  Camera.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Camera.cpp(25,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Camera.cpp(28,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Camera.cpp(31,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Camera.cpp(34,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  CameraFollower.cpp
+  Component.cpp
+  Game.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Game.cpp(8,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Game.cpp(84,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  GameObject.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\GameObject.cpp(17,32): warning C4018: '<': signed/unsigned mismatch
+  InputManager.cpp
+  Minion.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Minion.cpp(12,21): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Minion.cpp(21,34): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Rect.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Rect.cpp(41,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Resources.cpp
+  Sound.cpp
+  Sprite.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Sprite.cpp(45,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Sprite.cpp(46,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  State.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(49,32): warning C4018: '<': signed/unsigned mismatch
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(83,32): warning C4018: '<': signed/unsigned mismatch
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\State.cpp(86,32): warning C4018: '<': signed/unsigned mismatch
+  TileMap.cpp
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(55,71): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(56,72): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(57,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(57,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(64,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileMap.cpp(64,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  TileSet.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\TileSet.cpp(15,26): warning C4018: '<=': signed/unsigned mismatch
+  Vec2.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Vec2.cpp(56,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Vec2.cpp(88,28): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Vec2.cpp(106,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   Jogo_Do_Pinguim.vcxproj -> F:\JogoDoPinguim\idj-pinguim\Debug\Jogo_Do_Pinguim.exe

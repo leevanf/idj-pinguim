@@ -58,8 +58,14 @@ float Vec2::Magnitude() {
 
 Vec2& Vec2::Normalize() {
 	float currentMagnitude = Vec2::Magnitude();
-	x /= currentMagnitude;
-	y /= currentMagnitude;
+	if (currentMagnitude != 0) {
+		x /= currentMagnitude;
+		y /= currentMagnitude;
+	}
+	else {
+		x = 0;
+		y = 0;
+	}
 	return *this;
 }
 
@@ -82,7 +88,11 @@ float Vec2::InclinationXAxisDeg() {
 	return (atan2(y, x) * 180 / M_PI);
 }
 
-// InclinationTwoPoints();
+float Vec2::InclinationXAxisFromPoint(Vec2 vector) {
+	float x = vector.x - Vec2::x;
+	float y = vector.y - Vec2::y;
+	return atan2(y, x);
+}
 
 Vec2& Vec2::Rotate(float theta) {
 	float newX = x * cos(theta) - y * sin(theta);

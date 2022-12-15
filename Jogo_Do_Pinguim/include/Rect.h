@@ -13,11 +13,12 @@ public:
 	Rect(float w, float h);
 	Rect(float x, float y, float w, float h);
 	void addVector(Vec2 vector);
-	std::pair<float, float> RectCenter();
+	Vec2 RectCenter();
+	void setRectCenter(float x, float y);
 	float CentersDistance(Rect otherRect);
 	bool isPointInsideRect(float x, float y);
 private:
-	float _DistanceCalculator(std::pair<float, float> firstRect, std::pair<float, float> secondRect);
+	float _DistanceCalculator(Vec2 firstRect, Vec2 secondRect);
 };
 
 #endif // RECT

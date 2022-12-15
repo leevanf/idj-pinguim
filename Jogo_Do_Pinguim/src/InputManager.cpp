@@ -48,14 +48,11 @@ void InputManager::Update() {
 }
 
 bool InputManager::KeyPress(int key) {
-    if (keyState[key] && keyUpdate[key] == updateCounter) return true;
-    return false;
-    // considerar retornar keystate
+    return (keyState[key] && keyUpdate[key] == updateCounter);
 }
 
 bool InputManager::KeyRelease(int key) {
-    if (!keyState[key] && keyUpdate[key] == updateCounter) return true;
-    return false;
+    return (!keyState[key] && keyUpdate[key] == updateCounter);
 }
 
 bool InputManager::IsKeyDown(int key) {
@@ -63,13 +60,11 @@ bool InputManager::IsKeyDown(int key) {
 }
 
 bool InputManager::MousePress(int button) {
-    if (mouseState[button] && mouseUpdate[button] == updateCounter) return true;
-    return false;
+    return (mouseState[button] && mouseUpdate[button] == updateCounter);
 }
 
 bool InputManager::MouseRelease(int button) {
-    if (!mouseState[button] && mouseUpdate[button] == updateCounter) return true;
-    return false;
+    return (!mouseState[button] && mouseUpdate[button] == updateCounter);
 }
 
 bool InputManager::IsMouseDown(int button) {
