@@ -8,6 +8,7 @@ Bullet::Bullet(GameObject& associated, float angle, float speed, int damage, flo
 	distanceLeft = maxDistance;
 	Bullet::damage = damage;
 	Bullet::speed = Vec2(1, 0).Rotate(angle).ScalarMultiply(speed);
+	mAssociated.angleDeg = angle * 180 / M_PI;
 }
 
 void Bullet::Update(float dt) {

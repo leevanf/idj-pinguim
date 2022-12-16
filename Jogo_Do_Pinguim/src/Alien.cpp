@@ -25,7 +25,7 @@ void Alien::Start() {
 	State& state = Game::GetInstance().GetState();
 	for (int counter = 0; counter < 3; counter++) {
 		GameObject* GO = new GameObject();
-		Minion* minion = new Minion(*GO, state.GetObjectPtr(&mAssociated), counter * 2 * M_PI / 3);
+		Minion* minion = new Minion(*GO, state.GetObjectPtr(&mAssociated), counter * 120);
 		GO->AddComponent(minion);
 		minionArray.push_back(state.AddObject(GO));
 	}
@@ -83,6 +83,7 @@ void Alien::_moveAlien(Vec2 velVector, Vec2 alienPos, Vec2 mousePos) {
 void Alien::Update(float dt) {
 	State& state = Game::GetInstance().GetState();
 	InputManager& inputManager = InputManager::GetInstance();
+	mAssociated.angleDeg -= 5*dt;
 	if (inputManager.MousePress(LEFT_MOUSE_BUTTON)) {
 		Action action(Action::ActionType::SHOOT, Vec2(inputManager.GetMouseX() - Camera::pos.x, inputManager.GetMouseY() - Camera::pos.y));
 		taskQueue.emplace(action);

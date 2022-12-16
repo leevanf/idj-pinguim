@@ -23,6 +23,7 @@ class GameObject{
 		Component* GetComponent(std::string type);
 		Rect box;
 		bool started;
+		double angleDeg;
 };
 
 #endif //GAMEOBJECT

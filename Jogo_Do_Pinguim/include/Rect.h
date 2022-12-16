@@ -15,6 +15,7 @@ public:
 	void addVector(Vec2 vector);
 	Vec2 RectCenter();
 	void setRectCenter(float x, float y);
+	void setRectCenter(Vec2 vector);
 	float CentersDistance(Rect otherRect);
 	bool isPointInsideRect(float x, float y);
 private:

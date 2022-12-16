@@ -35,6 +35,11 @@ void Rect::setRectCenter(float x, float y) {
 	Rect::y = y - h / 2;
 }
 
+void Rect::setRectCenter(Vec2 vector) {
+	Rect::x = vector.x - w / 2;
+	Rect::y = vector.y - h / 2;
+}
+
 float Rect::_DistanceCalculator(Vec2 firstRect, Vec2 secondRect) {
 	float xPos = firstRect.x - secondRect.x;
 	float yPos = firstRect.y - secondRect.y;
