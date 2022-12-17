@@ -92,8 +92,9 @@ void Alien::Update(float dt) {
 		Action action(Action::ActionType::MOVE, Vec2(inputManager.GetMouseX() - Camera::pos.x, inputManager.GetMouseY() - Camera::pos.y));
 		taskQueue.emplace(action);
 	}
+	std::cout << taskQueue.size() << "\n";
 	if (taskQueue.size() > 0) {
-		if (taskQueue.front().type == Action::ActionType::SHOOT) {
+		if (taskQueue.size() != 0 && taskQueue.front().type == Action::ActionType::SHOOT) {
 			int index = 0;
 			float baseMag = std::numeric_limits<float>::infinity();
 			float tempMag = 0;
@@ -108,7 +109,7 @@ void Alien::Update(float dt) {
 			minion->Shoot(taskQueue.front().pos);
 			taskQueue.pop();
 		}
-		if (taskQueue.front().type == Action::ActionType::MOVE) {
+		if (taskQueue.size() != 0 && taskQueue.front().type == Action::ActionType::MOVE) {
 			int velocity = 150;
 			Vec2 alienPos(this->mAssociated.box.x, this->mAssociated.box.y);
 			Vec2 mousePos = taskQueue.front().pos - Vec2(mAssociated.box.w / 2, mAssociated.box.h / 2);

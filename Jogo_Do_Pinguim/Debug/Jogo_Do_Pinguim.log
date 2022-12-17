@@ -1,6 +1,8 @@
-﻿  Minion.cpp
+﻿  Alien.cpp
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(26,33): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(27,35): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Minion.cpp(9,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Minion.cpp(15,21): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(28,78): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(36,35): warning C4144: '<': relational expression as switch expression
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(57,35): warning C4144: '<': relational expression as switch expression
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(101,34): warning C4018: '<': signed/unsigned mismatch
   Jogo_Do_Pinguim.vcxproj -> F:\JogoDoPinguim\idj-pinguim\Debug\Jogo_Do_Pinguim.exe
