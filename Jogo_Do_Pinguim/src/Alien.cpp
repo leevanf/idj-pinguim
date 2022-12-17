@@ -23,9 +23,10 @@ Alien::~Alien() {
 
 void Alien::Start() {
 	State& state = Game::GetInstance().GetState();
-	for (int counter = 0; counter < 3; counter++) {
+	int MINION_QUANTITY = 3;
+	for (int counter = 0; counter < MINION_QUANTITY; counter++) {
 		GameObject* GO = new GameObject();
-		Minion* minion = new Minion(*GO, state.GetObjectPtr(&mAssociated), counter * 120);
+		Minion* minion = new Minion(*GO, state.GetObjectPtr(&mAssociated), counter * 360 / MINION_QUANTITY);
 		GO->AddComponent(minion);
 		minionArray.push_back(state.AddObject(GO));
 	}
@@ -92,7 +93,6 @@ void Alien::Update(float dt) {
 		Action action(Action::ActionType::MOVE, Vec2(inputManager.GetMouseX() - Camera::pos.x, inputManager.GetMouseY() - Camera::pos.y));
 		taskQueue.emplace(action);
 	}
-	std::cout << taskQueue.size() << "\n";
 	if (taskQueue.size() > 0) {
 		if (taskQueue.size() != 0 && taskQueue.front().type == Action::ActionType::SHOOT) {
 			int index = 0;
