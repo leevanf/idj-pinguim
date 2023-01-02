@@ -32,6 +32,7 @@ class Alien : public Component {
 		virtual void Start();
 		virtual void Update(float dt);
 		virtual void Render();
+		virtual void NotifyCollision(GameObject& other);
 		virtual bool Is(std::string type) { return (type == "Alien"); };
 
 };

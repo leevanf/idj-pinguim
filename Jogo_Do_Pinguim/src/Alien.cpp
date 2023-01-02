@@ -1,9 +1,12 @@
 #include "Alien.h"
+#include "Bullet.h"
 #include "Camera.h"
+#include "Collider.h"
 #include "Game.h"
 #include "Minion.h"
-#include "State.h"
+#include "Sound.h"
 #include "Sprite.h"
+#include "State.h"
 #include "InputManager.h"
 #include "SDL.h"
 #include <iostream>
@@ -12,7 +15,9 @@
 
 Alien::Alien(GameObject& associated, int nMinions) : Component(associated) {
 	Sprite* alienSprite = new Sprite(associated, "..\\Jogo_Do_Pinguim\\img\\alien.png");
+	Collider* collider = new Collider(associated,Vec2(0.7,0.6));
 	associated.AddComponent(alienSprite);
+	associated.AddComponent(collider);
 	speed = Vec2();
 	hp = 100;
 }
@@ -119,11 +124,26 @@ void Alien::Update(float dt) {
 	}
 	if (this->hp <= 0) {
 		mAssociated.RequestDelete();
+		GameObject* GO = new GameObject();
+		Sprite* deathSprite = new Sprite(*GO, "..\\Jogo_Do_Pinguim\\img\\aliendeath.png", Vec2(0.8, 0.8), 4, 0.2, 0.8);
+		GO->box.setRectCenter(mAssociated.box.RectCenter());
+		GO->AddComponent(deathSprite);
+		Sound* deathSound = new Sound(*GO, "..\\Jogo_Do_Pinguim\\audio\\boom2.wav");
+		deathSound->Play();
+		GO->AddComponent(deathSound);
+		Game::GetInstance().GetState().AddObject(GO);
 	}
 }
 
 void Alien::Render() {
 
+}
+
+void Alien::NotifyCollision(GameObject& other) {
+	Bullet* bullet = (Bullet*)other.GetComponent("Bullet");
+	if (bullet && !bullet->targetsPlayer) {
+		hp -= bullet->GetDamage();
+	}
 }
 
 Action::Action(ActionType type, float x, float y) {

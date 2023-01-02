@@ -20,6 +20,7 @@ public:
 	virtual void Update(float dt);
 	virtual void Render();
 	virtual bool Is(std::string type);
+	virtual void NotifyCollision(GameObject& other) {};
 };
 
 #endif // SOUND

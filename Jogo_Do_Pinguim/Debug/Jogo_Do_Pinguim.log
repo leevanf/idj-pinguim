@@ -1,8 +1,22 @@
 ﻿  Alien.cpp
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(26,33): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(27,35): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(29,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(37,35): warning C4144: '<': relational expression as switch expression
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(58,35): warning C4144: '<': relational expression as switch expression
-F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(102,34): warning C4018: '<': signed/unsigned mismatch
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(36,58): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(37,48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(38,35): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(18,59): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(34,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(42,35): warning C4144: '<': relational expression as switch expression
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(63,35): warning C4144: '<': relational expression as switch expression
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(106,34): warning C4018: '<': signed/unsigned mismatch
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(128,98): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\Alien.cpp(128,113): warning C4305: 'argument': truncation from 'double' to 'float'
+  PenguinBody.cpp
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(36,58): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(37,48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\include\Sprite.h(38,35): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\PenguinBody.cpp(39,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\PenguinBody.cpp(42,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\PenguinBody.cpp(46,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\JogoDoPinguim\idj-pinguim\Jogo_Do_Pinguim\src\PenguinBody.cpp(70,112): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
+  LINK : F:\JogoDoPinguim\idj-pinguim\Debug\Jogo_Do_Pinguim.exe not found or not built by the last incremental link; performing full link
   Jogo_Do_Pinguim.vcxproj -> F:\JogoDoPinguim\idj-pinguim\Debug\Jogo_Do_Pinguim.exe

@@ -1,13 +1,16 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
-#include "State.h"
-#include "Face.h"
-#include "Sound.h"
-#include "TileMap.h"
-#include "InputManager.h"
+#include "Alien.h"
 #include "Camera.h"
 #include "CameraFollower.h"
-#include "Alien.h"
+#include "Collider.h"
+#include "Collision.h"
+#include "Face.h"
+#include "InputManager.h"
+#include "PenguinBody.h"
+#include "Sound.h"
+#include "State.h"
+#include "TileMap.h"
 
 State::State() : music{ "..\\Jogo_Do_Pinguim\\audio\\stageState.ogg" } {
 	started = false;
@@ -35,6 +38,13 @@ State::State() : music{ "..\\Jogo_Do_Pinguim\\audio\\stageState.ogg" } {
 	GO3->box.setRectCenter(512, 300);
 	GO3->AddComponent(alien);
 	objectArray.emplace_back(GO3);
+
+	GameObject* GO4 = new GameObject();
+	PenguinBody* pbody = new PenguinBody(*GO4);
+	GO4->box.setRectCenter(704, 640);
+	GO4->AddComponent(pbody);
+	objectArray.emplace_back(GO4);
+	Camera::Follow(GO4);
 
 	music.Play();
 }
@@ -74,15 +84,43 @@ void State::LoadAssets() {
 	// pre carrega os assets do state do jogo
 }
 
+void State::CollisionChecker() {
+	for (int firstCounter = 0; firstCounter < objectArray.size(); firstCounter++) {
+		Collider* firstCollider = (Collider*)objectArray[firstCounter]->GetComponent("Collider");
+		if (firstCollider != nullptr) {
+			for (int secondCounter = firstCounter + 1; secondCounter < objectArray.size(); secondCounter++) {
+				Collider* secondCollider = (Collider*)objectArray[secondCounter]->GetComponent("Collider");
+				if (secondCollider != nullptr) {
+					GameObject* firstColliderGO = firstCollider->getGameObject();
+					GameObject* secondColliderGO = secondCollider->getGameObject();
+					float firstColliderAngle = firstColliderGO->angleDeg * M_PI / 180;
+					float secondColliderAngle = secondColliderGO->angleDeg * M_PI / 180;
+					bool collisionHappened = Collision::IsColliding(firstCollider->box, secondCollider->box, firstColliderAngle, secondColliderAngle);
+					if (collisionHappened) {
+						firstColliderGO->NotifyCollision(*secondColliderGO);
+						secondColliderGO->NotifyCollision(*firstColliderGO);
+					}
+				}
+			}
+		}
+	}
+}
+
 void State::Update(float dt) {
 	InputManager& inputManager = InputManager::GetInstance();
+
 	Camera::Update(dt);
+
 	if (inputManager.QuitRequested() || inputManager.IsKeyDown(ESCAPE_KEY)) {
 		quitRequested = true;
 	}
+
 	for (int counter = 0; counter < objectArray.size(); counter++) {
 		objectArray[counter]->Update(dt);
 	}
+
+	State::CollisionChecker();
+
 	for (int counter = 0; counter < objectArray.size(); counter++) {
 		if (objectArray[counter]->IsDead()) {
 			objectArray.erase(objectArray.begin() + counter);

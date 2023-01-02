@@ -13,8 +13,9 @@ class State{
 		bool quitRequested;
 		TileSet* tileSet;
 		bool started;
-
 		std::vector<std::shared_ptr<GameObject>> objectArray;
+
+		void CollisionChecker();
 	public:
 		State();
 		~State();

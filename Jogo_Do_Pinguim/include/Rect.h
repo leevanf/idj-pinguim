@@ -14,8 +14,9 @@ public:
 	Rect(float x, float y, float w, float h);
 	void addVector(Vec2 vector);
 	Vec2 RectCenter();
-	void setRectCenter(float x, float y);
-	void setRectCenter(Vec2 vector);
+	Rect& setRectCenter(float x, float y);
+	Rect& setRectCenter(Vec2 vector);
+	Rect& multiplyByScale(Vec2 scale);
 	float CentersDistance(Rect otherRect);
 	bool isPointInsideRect(float x, float y);
 private:

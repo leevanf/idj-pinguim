@@ -1,6 +1,8 @@
 #include "Camera.h"
 #include "InputManager.h"
 #include "SDL.h"
+#include <iostream>
+
 GameObject* Camera::focus;
 Vec2 Camera::pos;
 Vec2 Camera::speed;
@@ -16,7 +18,7 @@ void Camera::Unfollow() {
 void Camera::Update(float dt) {
 	int cameraSpeed = 150;
 	if (focus) {
-		pos = Vec2(focus->box.x, focus->box.y);
+		pos = Vec2( -(focus->box.RectCenter().x - 512), -(focus->box.RectCenter().y - 300));
 	}
 	else {
 		InputManager& inputManager = InputManager::GetInstance();

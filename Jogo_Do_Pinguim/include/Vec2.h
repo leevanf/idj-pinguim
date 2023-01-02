@@ -22,11 +22,15 @@ public:
 	float InclinationXAxisFromPoint(Vec2 vector);
 	Vec2& Rotate(float theta);
 	Vec2& RotateDeg(float thetaDeg);
+	Vec2 ExtractSign();
+
+	void Print();
 
 	Vec2 operator+(Vec2 vector) { return Vec2(x + vector.x, y + vector.y); };
 	Vec2 operator-(Vec2 vector) { return Vec2(x - vector.x, y - vector.y); };
 	Vec2 operator*(float scalar) { return Vec2(x * scalar, y * scalar); };
 	Vec2 operator/(float scalar) { return Vec2(x / scalar, y / scalar); };
+	Vec2 operator*(const float rhs) const { return Vec2(x * rhs, y * rhs); };
 };
 
 #endif // VEC2

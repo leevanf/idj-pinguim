@@ -30,14 +30,22 @@ Vec2 Rect::RectCenter() {
 	return Vec2(x + w / 2, y + h / 2);
 }
 
-void Rect::setRectCenter(float x, float y) {
+Rect& Rect::setRectCenter(float x, float y) {
 	Rect::x = x - w / 2;
 	Rect::y = y - h / 2;
+	return *this;
 }
 
-void Rect::setRectCenter(Vec2 vector) {
+Rect& Rect::setRectCenter(Vec2 vector) {
 	Rect::x = vector.x - w / 2;
 	Rect::y = vector.y - h / 2;
+	return *this;
+}
+
+Rect& Rect::multiplyByScale(Vec2 scale) {
+	w = w * scale.x;
+	h = h * scale.y;
+	return *this;
 }
 
 float Rect::_DistanceCalculator(Vec2 firstRect, Vec2 secondRect) {

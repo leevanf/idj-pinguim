@@ -3,14 +3,19 @@
 #include "Resources.h"
 #include "Camera.h"
 
-Sprite::Sprite(GameObject& associated, Vec2 scale) : Component(associated) {
+Sprite::Sprite(GameObject& associated, Vec2 scale, int frameCount, float frameTime, float secondsToSelfDestruct) : Component(associated) {
 	texture = nullptr;
 	width = 0;
 	height = 0;
 	Sprite::scale = scale;
+	Sprite::frameCount = frameCount;
+	Sprite::frameTime = frameTime;
+	Sprite::secondsToSelfDestruct = secondsToSelfDestruct;
+	currentFrame = 0;
+	timeElapsed = 0;
 }
 
-Sprite::Sprite(GameObject& associated, std::string file, Vec2 scale) : Sprite(associated, scale) {
+Sprite::Sprite(GameObject& associated, std::string file, Vec2 scale, int frameCount, float frameTime, float secondsToSelfDestruct) : Sprite(associated, scale, frameCount, frameTime, secondsToSelfDestruct) {
 	Open(file);
 }
 
@@ -25,9 +30,9 @@ void Sprite::Open(std::string file) {
 		return;
 	}
 	SDL_QueryTexture(texture, nullptr, nullptr, &width, &height);
-	mAssociated.box.w = (float)width*scale.x;
+	mAssociated.box.w = (float)(width / frameCount)*scale.x;
 	mAssociated.box.h = (float)height*scale.y;
-	SetClip(0, 0, width, height);
+	SetFrame(0);
 }
 
 void Sprite::SetClip(int x, int y, int w, int h) {
@@ -69,8 +74,37 @@ void Sprite::Render(float x, float y) {
 	}
 }
 
-void Sprite::Update(float dt) {
+void Sprite::SetFrame(int frame) {
+	currentFrame = frame;
+	int frameSize = width / frameCount;
+	Sprite::SetClip(currentFrame * frameSize, 0, frameSize, height);
+	timeElapsed = 0;
+}
 
+void Sprite::SetFrameCount(int frameCount) { 
+	currentFrame = 0;
+	Sprite::frameCount = frameCount;
+	mAssociated.box.w = (width / frameCount) * scale.x;
+}
+
+void Sprite::Update(float dt) {
+	if (secondsToSelfDestruct > 0) {
+		selfDestructCount.Update(dt);
+		if (selfDestructCount.Get() > secondsToSelfDestruct) {
+			mAssociated.RequestDelete();
+		}
+	}
+
+	timeElapsed += dt;
+
+	if (timeElapsed > frameTime) {
+		if (currentFrame + 1 < frameCount) {
+			SetFrame(currentFrame + 1);
+		}
+		else {
+			SetFrame(0);
+		}
+	}
 }
 
 bool Sprite::Is(std::string type) {

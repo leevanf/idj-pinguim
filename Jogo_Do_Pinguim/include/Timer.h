@@ -1,5 +1,5 @@
-#ifndef ALIEN
-#define ALIEN
+#ifndef TIMER
+#define TIMER
 class Timer{
 	private:
 		float timer;
@@ -10,4 +10,4 @@ class Timer{
 		float Get() { return timer; };
 };
 
-#endif // ALIEN
+#endif // TIMER

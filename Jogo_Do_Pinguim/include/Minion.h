@@ -12,6 +12,7 @@ class Minion : public Component {
 		void Shoot(Vec2 target);
 		virtual void Update(float dt);
 		virtual void Render();
+		virtual void NotifyCollision(GameObject& other);
 		virtual bool Is(std::string type) { return (type == "Minion"); };
 };
 

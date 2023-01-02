@@ -1,6 +1,7 @@
 #define _USE_MATH_DEFINES
 #include "Vec2.h"
 #include <cmath>
+#include <iostream>
 
 Vec2::Vec2() {
 	x = 0;
@@ -109,4 +110,12 @@ Vec2& Vec2::RotateDeg(float thetaDeg) {
 	x = newX;
 	y = newY;
 	return *this;
+}
+
+Vec2 Vec2::ExtractSign() {
+	return Vec2(copysign(1, x), copysign(1, y));
+}
+
+void Vec2::Print() {
+	std::cout << "x: " << x << " y: " << y << "\n";
 }

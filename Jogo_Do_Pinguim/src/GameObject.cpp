@@ -41,6 +41,12 @@ void GameObject::RequestDelete() {
 	isDead = true;
 }
 
+void GameObject::NotifyCollision(GameObject& other) {
+	for (auto it = components.begin(); it != components.end(); ++it) {
+		(*it)->NotifyCollision(other);
+	}
+}
+
 void GameObject::AddComponent(Component* cpt) {
 	components.emplace_back(cpt);
 	if (started) {

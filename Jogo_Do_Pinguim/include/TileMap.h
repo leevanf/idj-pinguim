@@ -20,6 +20,7 @@ class TileMap : public Component {
 		void RenderLayer(int layer, int cameraX = 0, int cameraY = 0);
 		virtual void Update(float dt);
 		virtual bool Is(std::string type);
+		virtual void NotifyCollision(GameObject& other) {};
 		int GetWidth() { return mapWidth; };
 		int GetHeight() { return mapHeight; };
 		int GetDepth() { return mapDepth; };

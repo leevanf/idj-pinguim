@@ -18,6 +18,7 @@ class GameObject{
 		void Render();
 		bool IsDead();
 		void RequestDelete();
+		void NotifyCollision(GameObject& other);
 		void AddComponent(Component* cpt);
 		void RemoveComponent(Component* cpt);
 		Component* GetComponent(std::string type);
