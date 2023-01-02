@@ -6,7 +6,7 @@
 #include "PenguinCannon.h"
 #include "Sprite.h"
 
-#define CANNON_COOLDOWN 0.4
+#define CANNON_COOLDOWN 0.75
 
 PenguinCannon::PenguinCannon(GameObject& associated, std::weak_ptr<GameObject> penguinBody) : Component(associated) {
 	Sprite* penguinCannonSprite = new Sprite(associated, "..\\Jogo_Do_Pinguim\\img\\cubngun.png");
@@ -28,7 +28,7 @@ void PenguinCannon::Update(float dt) {
 
 	mAssociated.box.setRectCenter(pbody.lock()->box.RectCenter().x, pbody.lock()->box.RectCenter().y);
 	Vec2 mousePos(inputManager.GetMouseX() - Camera::pos.x, inputManager.GetMouseY() - Camera::pos.y);
-	angle = Vec2(mAssociated.box.RectCenter() + CANNON_OFFSET).InclinationXAxisFromPoint(mousePos);
+	angle = Vec2(mAssociated.box.RectCenter()).InclinationXAxisFromPoint(mousePos);
 	mAssociated.angleDeg = angle * 180 / M_PI;
 	if (inputManager.MousePress(LEFT_MOUSE_BUTTON)) {
 		PenguinCannon::Shoot();

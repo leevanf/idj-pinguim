@@ -8,6 +8,10 @@
 #include "Sprite.h"
 #include "State.h"
 
+#define MAX_FWD_VELOCITY 6
+#define MAX_BWD_VELOCITY -4
+#define ACCELERATION 1.625
+
 PenguinBody* PenguinBody::player;
 PenguinBody::PenguinBody(GameObject& associated) : Component(associated) {
 	Sprite* penguinBodySprite = new Sprite(associated, "..\\Jogo_Do_Pinguim\\img\\penguin.png");
@@ -25,6 +29,10 @@ PenguinBody::~PenguinBody() {
 	player = nullptr;
 }
 
+Vec2 PenguinBody::GetPlayerPos() {
+	return mAssociated.box.RectCenter();
+}
+
 void PenguinBody::Start() {
 	State& state = Game::GetInstance().GetState();
 	GameObject* GO = new GameObject();
@@ -34,7 +42,6 @@ void PenguinBody::Start() {
 }
 
 void PenguinBody::Update(float dt) {
-	float acceleration = 1.5;
 	InputManager& inputManager = InputManager::GetInstance();
 	int angularVelocity = 65 * dt;
 	if (inputManager.IsKeyDown(A_KEY)) {
@@ -46,35 +53,37 @@ void PenguinBody::Update(float dt) {
 		angle = mAssociated.angleDeg;
 	}
 	if (inputManager.IsKeyDown(W_KEY)) {
-		float MAX_FWD_VELOCITY = 5;
-		linearSpeed += acceleration * dt;
+		linearSpeed += ACCELERATION * dt;
 		if (linearSpeed > MAX_FWD_VELOCITY) linearSpeed = MAX_FWD_VELOCITY;
 		speed = Vec2(1, 0).RotateDeg(angle).Normalize().ScalarMultiply(linearSpeed);
 		PenguinBody::_movePenguin();
 	}
 	if (inputManager.IsKeyDown(S_KEY)) {
-		float MAX_BWD_VELOCITY = -3;
-		linearSpeed -= acceleration * dt;
+		linearSpeed -= ACCELERATION * dt;
 		if (linearSpeed < MAX_BWD_VELOCITY) linearSpeed = MAX_BWD_VELOCITY;
 		speed = Vec2(1, 0).RotateDeg(angle).Normalize().ScalarMultiply(linearSpeed);
 		PenguinBody::_movePenguin();
 	}
 	if (!inputManager.IsKeyDown(W_KEY) && !inputManager.IsKeyDown(S_KEY)) {
-		linearSpeed -= copysign(acceleration / 2 * dt, linearSpeed);
-		speed.Subtract(Vec2(speed.x * acceleration / 2 * dt, speed.y * acceleration / 2 * dt));
+		linearSpeed -= copysign(speed.Magnitude() * ACCELERATION / 2 * dt, linearSpeed);
+		speed.Subtract(Vec2(speed.x * ACCELERATION / 2 * dt, speed.y * ACCELERATION / 2 * dt));
 		PenguinBody::_movePenguin();
 	}
 	if (hp <= 0) {
 		mAssociated.RequestDelete();
-		GameObject* GO = new GameObject();
-		Sprite* deathSprite = new Sprite(*GO, "..\\Jogo_Do_Pinguim\\img\\penguindeath.png", Vec2(1,1), 5, 0.15, 0.75);
-		GO->box.setRectCenter(mAssociated.box.RectCenter());
-		GO->AddComponent(deathSprite);
-		Sound* deathSound = new Sound(*GO, "..\\Jogo_Do_Pinguim\\audio\\boom2.wav");
-		deathSound->Play();
-		GO->AddComponent(deathSound);
-		Game::GetInstance().GetState().AddObject(GO);
+		PenguinBody::PlayDeathAnimation();
 	}
+}
+
+void PenguinBody::PlayDeathAnimation() {
+	GameObject* GO = new GameObject();
+	Sprite* deathSprite = new Sprite(*GO, "..\\Jogo_Do_Pinguim\\img\\penguindeath.png", Vec2(1, 1), 5, 0.2, 1);
+	GO->box.setRectCenter(mAssociated.box.RectCenter());
+	GO->AddComponent(deathSprite);
+	Sound* deathSound = new Sound(*GO, "..\\Jogo_Do_Pinguim\\audio\\boom2.wav");
+	deathSound->Play();
+	GO->AddComponent(deathSound);
+	Game::GetInstance().GetState().AddObject(GO);
 }
 
 void PenguinBody::_movePenguin() {

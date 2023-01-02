@@ -14,6 +14,8 @@ public:
 	Rect(float x, float y, float w, float h);
 	void addVector(Vec2 vector);
 	Vec2 RectCenter();
+	Rect& setRectCenterX(float x);
+	Rect& setRectCenterY(float y);
 	Rect& setRectCenter(float x, float y);
 	Rect& setRectCenter(Vec2 vector);
 	Rect& multiplyByScale(Vec2 scale);

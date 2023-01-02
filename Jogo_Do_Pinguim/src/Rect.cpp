@@ -30,6 +30,16 @@ Vec2 Rect::RectCenter() {
 	return Vec2(x + w / 2, y + h / 2);
 }
 
+Rect& Rect::setRectCenterX(float x) {
+	Rect::x = x - w / 2;
+	return *this;
+}
+
+Rect& Rect::setRectCenterY(float y) {
+	Rect::y = y - h / 2;
+	return *this;
+}
+
 Rect& Rect::setRectCenter(float x, float y) {
 	Rect::x = x - w / 2;
 	Rect::y = y - h / 2;

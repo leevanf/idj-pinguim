@@ -11,9 +11,11 @@ class PenguinBody : public Component {
 		int hp;
 
 		void _movePenguin();
+		void PlayDeathAnimation();
 	public:
 		PenguinBody(GameObject& associated);
 		~PenguinBody();
+		Vec2 GetPlayerPos();
 		void Start();
 		virtual void Render();
 		virtual void Update(float dt);
